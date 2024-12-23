@@ -1,1 +1,4 @@
 .DS_Store
+data/raw/SeuratProject.h5Seurat
+data/cell_types_annotations.csv
+data/raw_counts.csv
