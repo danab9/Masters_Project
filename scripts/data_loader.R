@@ -1,3 +1,5 @@
+# Functions to handle loading of Seurat files and some basic data extraction.
+
 library(SeuratDisk)
 library(dplyr)
 library(Seurat)

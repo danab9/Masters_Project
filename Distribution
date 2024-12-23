@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<installer-gui-script minSpecVersion="1">
+    <title>R 4.4.2 for macOS (ARM64)</title>
+    <options customize="allow" require-scripts="false" hostArchitectures="arm64"/>
+    <choices-outline>
+        <line choice="org.R-project.arm64.R.fw.pkg"/>
+        <line choice="org.R-project.arm64.R.GUI.pkg"/>
+        <line choice="org.r-project.arm64.tcltk.x11"/>
+        <line choice="org.r-project.arm64.texinfo"/>
+    </choices-outline>
+    <choice id="org.R-project.arm64.R.fw.pkg" visible="true" title="R 4.4.2 Framework" tooltip="R 4.4.2 Framework" description="R framework version 4.4.2 (64-bit ARM Macs only) for macOS 11 (Big Sur) or higher. This package contains the full framework necessary for the use of R.">
+        <pkg-ref id="org.R-project.arm64.R.fw.pkg"/>
+    </choice>
+    <pkg-ref id="org.R-project.arm64.R.fw.pkg" version="4.4.2" onConclusion="none" installKBytes="144940">#R-fw.pkg</pkg-ref>
+    <choice id="org.R-project.arm64.R.GUI.pkg" visible="true" title="R GUI 1.81" tooltip="R for Mac OS X GUI 1.81 Application" description="This is the Mac GUI application for R. It requires a compatible R framework to be installed as well.">
+        <pkg-ref id="org.R-project.arm64.R.GUI.pkg"/>
+    </choice>
+    <pkg-ref id="org.R-project.arm64.R.GUI.pkg" version="1.81" onConclusion="none" installKBytes="5329">#R-app.pkg</pkg-ref>
+    <choice title="Tcl/Tk 8.6.13" id="org.r-project.arm64.tcltk.x11" tooltip="Tcl/Tk 8.6.13 (X11)" description="Tcl/Tk 8.6.13 build (X11 version) for macOS 11 and higher (64-bit, ARM). Needed for the tcltk R package.">
+        <pkg-ref id="org.r-project.arm64.tcltk.x11"/>
+    </choice>
+    <pkg-ref id="org.r-project.arm64.tcltk.x11" version="8.6.13" onConclusion="none" packageIdentifier="org.r-project.arm64.tcltk" installKBytes="15708">#tcltk.pkg</pkg-ref>
+    <choice title="Texinfo 6.8" id="org.r-project.arm64.texinfo" tooltip="Texinfo 6.8" description="Texinfo 6.8 for macOS 11 and higher (64-bit ARM). Needed for building documentation when compiling R packages from sources.">
+        <pkg-ref id="org.r-project.arm64.texinfo"/>
+    </choice>
+    <pkg-ref id="org.r-project.arm64.texinfo" version="6.8" onConclusion="none" installKBytes="7468">#texinfo.pkg</pkg-ref>
+    <welcome file="welcome.rtf" uti="public.rtf"/>
+    <license file="license.rtf" uti="public.rtf"/>
+    <readme file="readme.rtf" uti="public.rtf"/>
+    <background file="background.tiff" mime-type="image/tiff" scaling="proportional"/>
+    <!-- <background-darkAqua file="background.tiff" mime-type="image/tiff" scaling="proportional"/> -->
+    <pkg-ref id="org.R-project.arm64.R.fw.pkg">
+        <bundle-version>
+            <bundle CFBundleVersion="4.4.2" id="org.r-project.R-framework" path="R.framework"/>
+        </bundle-version>
+    </pkg-ref>
+    <pkg-ref id="org.R-project.arm64.R.GUI.pkg">
+        <bundle-version>
+            <bundle CFBundleShortVersionString="R 4.4.2 GUI 1.81 Big Sur ARM build" CFBundleVersion="8462" id="org.R-project.R" path="R.app"/>
+        </bundle-version>
+    </pkg-ref>
+    <pkg-ref id="org.r-project.arm64.tcltk.x11">
+        <bundle-version/>
+    </pkg-ref>
+    <pkg-ref id="org.r-project.arm64.texinfo">
+        <bundle-version/>
+    </pkg-ref>
+</installer-gui-script>
