@@ -3,14 +3,14 @@
 # Load config
 configfile: "config.yaml"
 
-# Rule: Create results directory
+
 rule create_results_dir:
     output:
         directory(config["results_dir"])
     shell:
         "mkdir -p {output}"
 
-# Rule: GRN Inference
+
 rule grn_inference:
     input:
         expression_matrix=config["data"]["expression_matrix"],
@@ -26,7 +26,6 @@ rule grn_inference:
             --adjacencies {output.adjacencies} --modules {output.modules}
         """
 
-# Rule: Prune Modules
 rule prune_modules:
     input:
         adjacencies="{results_dir}/run_{run_num}/adjacencies.csv",
@@ -42,7 +41,6 @@ rule prune_modules:
             --regulons_output {output.regulons}
         """
 
-# Rule: AUCell Enrichment
 rule auc_enrichment:
     input:
         expression_matrix=config["data"]["expression_matrix"],
@@ -55,7 +53,6 @@ rule auc_enrichment:
             --regulons {input.regulons} --output {output.auc_matrix}
         """
 
-# Rule: Generate Heatmap
 rule generate_heatmap:
     input:
         auc_matrix="{results_dir}/run_{run_num}/AUCell_mat.csv",
@@ -67,8 +64,3 @@ rule generate_heatmap:
         python scripts/generate_heatmap.py --auc {input.auc_matrix} --cell_types {input.cell_types} \
             --output {output.heatmap}
         """
-
-# Rule: Aggregate Pipeline
-rule all:
-    input:
-        expand("{results_dir}/run_{run_num}/AUCell_heatmap.png", results_dir=config["results_dir"], run_num=range(1, config["runs"] + 1))
