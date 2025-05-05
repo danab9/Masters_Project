@@ -1,9 +1,9 @@
 # Configuration file for SCENIC pipeline
 runs: 50                        # Number of runs
 data:
-  expression_matrix: "data/expression_mat.csv"
+  expression_matrix: "data/raw/expression_mat.csv"
   tf_list: "data/external/allTFs_dmel.txt"
   ranking_db: "data/external/genes_vs_motifs.rankings.feather"
   motif_annotations: "data/external/flybase_motifs_annotations.tbl"
-  cell_types: "data/annotations/cell_type.csv"
+  cell_types: "data/annotations/cell_types.csv"
 results_dir: "results"
